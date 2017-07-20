@@ -1,4 +1,4 @@
-class MigratePaymentAndCommission < ActiveRecord::Migration
+class MigratePaymentAndCommission < SolidusSupport::Migration[4.2]
   def change
     add_column :spree_payments, :payable_id, :integer
     add_column :spree_payments, :payable_type, :string
