@@ -9,7 +9,7 @@ Spree::Order.class_eval do
   def finalize_with_drop_ship!
     finalize_without_drop_ship!
     shipments.each do |shipment|
-      if SpreeDropShip::Config[:send_supplier_email] && shipment.supplier.present?
+      if SolidusDropShip::Config[:send_supplier_email] && shipment.supplier.present?
         begin
           Spree::DropShipOrderMailer.supplier_order(shipment.id).deliver!
         rescue => ex #Errno::ECONNREFUSED => ex

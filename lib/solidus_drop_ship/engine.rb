@@ -16,7 +16,7 @@ module SolidusDropShip
     end
 
     initializer "solidus_drop_ship.preferences", before: :load_config_initializers  do |app|
-      SpreeDropShip::Config = Spree::DropShipConfiguration.new
+      SolidusDropShip::Config = Spree::DropShipConfiguration.new
     end
 
     def self.activate
