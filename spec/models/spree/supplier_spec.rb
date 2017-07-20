@@ -53,7 +53,7 @@ describe Spree::Supplier do
   context '#send_welcome' do
 
     after do
-      SpreeDropShip::Config[:send_supplier_email] = true
+      SolidusDropShip::Config[:send_supplier_email] = true
     end
 
     before do
@@ -64,7 +64,7 @@ describe Spree::Supplier do
     context 'with Spree::DropShipConfig[:send_supplier_email] == false' do
 
       it 'should not send' do
-        SpreeDropShip::Config[:send_supplier_email] = false
+        SolidusDropShip::Config[:send_supplier_email] = false
         expect {
           Spree::SupplierMailer.should_not_receive(:welcome).with(an_instance_of(Integer))
         }
@@ -87,11 +87,11 @@ describe Spree::Supplier do
   end
 
   it '#set_commission' do
-    SpreeDropShip::Config.set default_commission_flat_rate: 1
-    SpreeDropShip::Config.set default_commission_percentage: 1
+    SolidusDropShip::Config.set default_commission_flat_rate: 1
+    SolidusDropShip::Config.set default_commission_percentage: 1
     supplier = create :supplier
-    SpreeDropShip::Config.set default_commission_flat_rate: 0
-    SpreeDropShip::Config.set default_commission_percentage: 0
+    SolidusDropShip::Config.set default_commission_flat_rate: 0
+    SolidusDropShip::Config.set default_commission_percentage: 0
     # Default configuration is 0.0 for each.
     supplier.commission_flat_rate.to_f.should eql(1.0)
     supplier.commission_percentage.to_f.should eql(1.0)
